@@ -64,7 +64,7 @@ public:
   VoxelLayer() :
       voxel_grid_(0, 0, 0)
   {
-    costmap_ = NULL;  // this is the unsigned char* member of parent class's parent class Costmap2D.
+    costmap_ = NULL;
   }
 
   virtual ~VoxelLayer();

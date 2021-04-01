@@ -133,6 +133,7 @@ public:
     data_[index] = 0;
   }
 
+  // 好鸡肋的函数
   inline void clearVoxelInMap(unsigned int x, unsigned int y, unsigned int z)
   {
     if(x >= size_x_ || y >= size_y_ || z >= size_z_)
@@ -170,6 +171,7 @@ public:
     return true;
   }
 
+  // 数一下有多少位是 1
   static inline unsigned int numBits(unsigned int n)
   {
     unsigned int bit_count;

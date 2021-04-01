@@ -95,27 +95,25 @@ namespace move_base {
       virtual ~MoveBase();
 
       /**
-       * @brief  Performs a control cycle
-       * @param goal A reference to the goal to pursue
-       * @param global_plan A reference to the global plan being used
-       * @return True if processing of the goal is done, false otherwise
+       * @brief  执行控制循环
+       * @param goal 目标点的引用
+       * @param global_plan 使用的全局规划的引用
+       * @return 如果对 goal 的处理成功了就返回 true
        */
       bool executeCycle(geometry_msgs::PoseStamped& goal, std::vector<geometry_msgs::PoseStamped>& global_plan);
 
     private:
       /**
-       * @brief  A service call that clears the costmaps of obstacles
-       * @param req The service request 
-       * @param resp The service response
-       * @return True if the service call succeeds, false otherwise
+       * @brief  清除 costmap 中障碍物的 service
+       * @return 如果调用成功了就返回 true
        */
       bool clearCostmapsService(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp);
 
       /**
-       * @brief  A service call that can be made when the action is inactive that will return a plan
-       * @param  req The goal request
-       * @param  resp The plan request
-       * @return True if planning succeeded, false otherwise
+       * @brief  当操作处于非活动状态时可以进行的 service 调用，它将返回一个 plan
+       * @param  req  start + goal + tolerance
+       * @param  resp plan
+       * @return 如果规划成功了就返回 true
        */
       bool planService(nav_msgs::GetPlan::Request &req, nav_msgs::GetPlan::Response &resp);
 
@@ -128,14 +126,14 @@ namespace move_base {
       bool makePlan(const geometry_msgs::PoseStamped& goal, std::vector<geometry_msgs::PoseStamped>& plan);
 
       /**
-       * @brief  Load the recovery behaviors for the navigation stack from the parameter server
+       * @brief  从参数服务器加载 recovery behaviors
        * @param node The ros::NodeHandle to be used for loading parameters 
-       * @return True if the recovery behaviors were loaded successfully, false otherwise
+       * @return 如果 recovery behaviors 加载成功了返回 true
        */
       bool loadRecoveryBehaviors(ros::NodeHandle node);
 
       /**
-       * @brief  Loads the default recovery behaviors for the navigation stack
+       * @brief  加载默认的 recovery behaviors
        */
       void loadDefaultRecoveryBehaviors();
 

@@ -53,9 +53,12 @@ namespace voxel_grid {
       size_z_ = 16;
     }
 
+    // unsigned int 为 32 位
     data_ = new uint32_t[size_x_ * size_y_];
+    // 按位取反后左移16位
     uint32_t unknown_col = ~((uint32_t)0)>>16;
     uint32_t* col = data_;
+    // 把 col 的中的所有值赋值为 unknown_col
     for(unsigned int i = 0; i < size_x_ * size_y_; ++i){
       *col = unknown_col;
       ++col;
